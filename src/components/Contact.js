@@ -1,6 +1,7 @@
 import React from 'react';
 import ContactInfo   from './ContactInfo.js';
 import ContactDetail from './ContactDetail.js';
+import ContactCreate from './ContactCreate.js';
 
 class Contact extends React.Component{
 
@@ -28,9 +29,14 @@ class Contact extends React.Component{
                 }
             ]
         }
+
+        this.handleClick = this.handleClick.bind(this);
     }
 
     handleClick(key){
+        this.setState({
+            selectedKey : key
+        });
         console.log('handleClick@@', key)
     };
     
@@ -39,19 +45,22 @@ class Contact extends React.Component{
         const mapToComponents = (data) => {
             return data.map(
                 (contact, i) => {
-                    return(<ContactInfo contact={contact} key={i} onClick={() => this.handleClick(i)}/>);
+                    return(<ContactInfo contact={contact} key={i} onClick={()=>this.handleClick(i)}/>);
                 }
             );
         };
 
         return (
             <div>
-                <div>Contact</div>
+                <h3>Contact</h3>
                 <div>{mapToComponents(this.state.contactData)}</div>
                 <hr />
                 <ContactDetail 
+                    selectedKey = {this.state.selectedKey}
                     contact={this.state.contactData[this.state.selectedKey]}
                 />
+                <hr />
+                <ContactCreate />
             </div>
         )
     }

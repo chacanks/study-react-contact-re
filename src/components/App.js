@@ -6,7 +6,7 @@ class App extends React.Component{
     render(){
         return(
             <div>
-                <div>This is 'Contact APP'</div>
+                <div>This is '<strong>Contact APP</strong>'</div>
                 <hr />
                 <Contact/>           
             </div>
