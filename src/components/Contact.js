@@ -31,13 +31,22 @@ class Contact extends React.Component{
         }
 
         this.handleClick = this.handleClick.bind(this);
+        this.handleSave  = this.handleSave.bind(this);
     }
 
+    /**
+     * Contact List Click event.
+     * @param {*contact key. UUID} key 
+     */
     handleClick(key){
         this.setState({
             selectedKey : key
         });
         console.log('handleClick@@', key)
+    };
+  
+    handleCreate(contact){
+        console.log('Contact.js', contact);
     };
     
     render(){
@@ -60,7 +69,9 @@ class Contact extends React.Component{
                     contact={this.state.contactData[this.state.selectedKey]}
                 />
                 <hr />
-                <ContactCreate />
+                <ContactCreate 
+                    onCreate={this.handleCreate}
+                />
             </div>
         )
     }
