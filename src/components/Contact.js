@@ -82,5 +82,5 @@ class Contact extends React.Component{
         )
     }
 }
-//
+//git rebase test !!
 export default Contact;
