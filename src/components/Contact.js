@@ -48,12 +48,10 @@ class Contact extends React.Component{
     };
   
     handleCreate(contact){
-        console.log('this', this);
-
         this.setState({
             contactData : update(this.state.contactData, {$push : [contact]})
         });
-        console.log('Contact.js', contact);
+        console.log('Contact.js', this.state.contactData);
     };
     
     render(){
@@ -83,5 +81,5 @@ class Contact extends React.Component{
         )
     }
 }
-
+//git rebase test !!
 export default Contact;
