@@ -1,4 +1,6 @@
 import React from 'react';
+import update from 'react-addons-update';
+
 import ContactInfo   from './ContactInfo.js';
 import ContactDetail from './ContactDetail.js';
 import ContactCreate from './ContactCreate.js';
@@ -31,7 +33,7 @@ class Contact extends React.Component{
         }
 
         this.handleClick = this.handleClick.bind(this);
-        this.handleSave  = this.handleSave.bind(this);
+        this.handleCreate  = this.handleCreate.bind(this);
     }
 
     /**
@@ -46,6 +48,11 @@ class Contact extends React.Component{
     };
   
     handleCreate(contact){
+        console.log('this', this);
+
+        this.setState({
+            contactData : update(this.state.contactData, {$push : [contact]})
+        });
         console.log('Contact.js', contact);
     };
     
